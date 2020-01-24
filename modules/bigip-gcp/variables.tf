@@ -1,0 +1,17 @@
+variable "project" {}
+variable "region" {}
+variable "zones" {}
+variable "mgmt_cidr" {}
+variable "external_cidr" {}
+variable "internal_cidr" {}
+variable "private_key_path" {}
+variable "external_count" {}
+variable "external_machine_type" {}
+variable "external_os_image" {}
+variable "external_boot_disk_size" {}
+variable "external_boot_disk_type" {}
+variable "internal_count" {}
+variable "internal_machine_type" {}
+variable "internal_os_image" {}
+variable "internal_boot_disk_size" {}
+variable "internal_boot_disk_type" {}

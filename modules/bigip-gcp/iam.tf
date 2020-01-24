@@ -1,0 +1,5 @@
+resource "google_project_iam_custom_role" "f5_gdm_failover_role" {
+  role_id     = "f5_gdm_failover_role"
+  title       = "Role for BIG-IP HA"
+  permissions = ["compute.forwardingRules.get", "compute.forwardingRules.list", "compute.forwardingRules.setTarget", "compute.instanceGroups.update", "compute.instances.create", "compute.instances.get", "compute.instances.list", "compute.instances.updateNetworkInterface", "compute.instances.use", "compute.networks.updatePolicy", "compute.routes.create", "compute.routes.delete", "compute.routes.get", "compute.routes.list", "compute.targetInstances.get", "compute.targetInstances.list", "compute.targetInstances.use", "storage.buckets.create", "storage.buckets.delete", "storage.buckets.get", "storage.buckets.list", "storage.buckets.update", "storage.objects.create", "storage.objects.delete", "storage.objects.get", "storage.objects.list", "storage.objects.update"]
+}

@@ -1,0 +1,28 @@
+# Infrastructure ignores.
+**/.terraform/*
+**/terraform/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# ansible retry files
+*.retry
+
+# The generated inventory file.
+*.lock.info
+.private.env
+**/inventory.ini
+
+# Other
+facts
+**/*.0
+.vscode/
+**/.DS_Store
+account.json
+credentials.json
+*aws-dns.tf.txt
+update_dns/aws-dns.tf
+*.plan
+cloudflare.tf
+ansible-playbooks/certs
