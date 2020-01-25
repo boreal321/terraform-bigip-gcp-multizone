@@ -1,5 +1,3 @@
-/*
-output "big_ip_ha_role" {
-    value = .google_project_iam_custom_role
+output "mgmt_server_IP_address" {
+    value = google_compute_address.mgmt_ext_ip.address
 }
-*/

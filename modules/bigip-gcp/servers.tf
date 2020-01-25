@@ -1,10 +1,11 @@
 resource "google_compute_instance" "internal_web" {
-  count        = 2
+  count        = var.web_count
   name         = "web-${count.index}"
   machine_type = var.internal_machine_type
   zone         = element(var.zones, count.index)
 
   tags = ["internal", "http", "ssh"]
+  metadata_startup_script = file("${path.cwd}/scripts/startup_script_web.sh")
 
   boot_disk {
     initialize_params {
@@ -64,6 +65,9 @@ resource "google_compute_instance" "mgmt_server" {
 
   network_interface {
     subnetwork = google_compute_subnetwork.mgmt_subnet.name
+    access_config {
+      nat_ip = google_compute_address.mgmt_ext_ip.address
+    }
   }
 
   service_account {

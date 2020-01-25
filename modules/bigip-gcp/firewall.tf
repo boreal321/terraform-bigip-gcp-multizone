@@ -73,16 +73,16 @@ resource "google_compute_firewall" "internal_allowed" {
 }
 
 resource "google_compute_firewall" "external_allowed" {
-  name    = "external-allow-ssh"
+  name    = "external-allow-ssh-http"
   network = google_compute_network.external_vpc.name
 
   allow {
     protocol = "tcp"
-    ports    = ["22"]
+    ports    = ["22", "443"]
   }
 
   source_ranges = ["0.0.0.0/0"]
-  target_tags = ["ssh", "http"]
+  // target_tags = ["ssh", "http"]
 }
 
 resource "google_compute_firewall" "mgmt_allowed" {

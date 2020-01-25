@@ -1,3 +1,11 @@
+/*
+ * Create external IP for mgmt-server host
+ */
+resource "google_compute_address" "mgmt_ext_ip" {
+  name   = "mgmt-ext-ip"
+  region = var.region
+}
+
 /* 
  * mgmt vpc and subnet
  */

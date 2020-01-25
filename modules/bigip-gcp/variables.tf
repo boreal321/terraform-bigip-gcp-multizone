@@ -1,9 +1,11 @@
 variable "project" {}
 variable "region" {}
 variable "zones" {}
+variable "web_count" {}
 variable "mgmt_cidr" {}
 variable "external_cidr" {}
 variable "internal_cidr" {}
+variable "public_key_path" {}
 variable "private_key_path" {}
 variable "external_count" {}
 variable "external_machine_type" {}
