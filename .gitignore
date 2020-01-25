@@ -26,3 +26,4 @@ update_dns/aws-dns.tf
 *.plan
 cloudflare.tf
 ansible-playbooks/certs
+scripts/

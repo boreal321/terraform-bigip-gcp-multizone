@@ -5,7 +5,7 @@ resource "google_compute_instance" "internal_web" {
   zone         = element(var.zones, count.index)
 
   tags = ["internal", "http", "ssh"]
-  metadata_startup_script = file("${path.cwd}/scripts/startup_script_web.sh")
+  metadata_startup_script = data.template_file.startup-script-template.rendered
 
   boot_disk {
     initialize_params {
@@ -65,6 +65,7 @@ resource "google_compute_instance" "mgmt_server" {
 
   network_interface {
     subnetwork = google_compute_subnetwork.mgmt_subnet.name
+    // assign a public IP address
     access_config {
       nat_ip = google_compute_address.mgmt_ext_ip.address
     }
