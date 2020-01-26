@@ -4,8 +4,8 @@ module "bigip-gcp" {
   region                  = var.region
   zones                   = ["us-east4-a", "us-east4-b"]
   web_count               = 2
-  private_key_path        = "~/.ssh/google_compute_engine"
-  public_key_path         = "~/.ssh/google_compute_engine.pub"
+  ssh_mgmt_user           = "granic"
+  ssh_mgmt_key            = "~/.ssh/google_compute_engine"
   mgmt_cidr               = "10.1.10.0/24"
   external_cidr           = "10.1.20.0/24"
   internal_cidr           = "10.1.30.0/24"

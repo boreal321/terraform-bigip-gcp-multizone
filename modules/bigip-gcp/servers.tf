@@ -74,4 +74,64 @@ resource "google_compute_instance" "mgmt_server" {
   service_account {
     scopes = ["userinfo-email", "compute-rw", "storage-rw"]
   }
+
+/*
+  provisioner "file" {
+    source      = "${path.cwd}/assets/cfe_gcp.json"
+    destination = "/tmp/cfe_gcp.json"
+    connection {
+      host     = google_compute_address.mgmt_ext_ip.address
+      type     = "ssh"
+      user     = var.ssh_mgmt_user
+      private_key = file(var.ssh_mgmt_key)
+    }
+  }
+  provisioner "file" {
+    source      = "${path.cwd}/assets/f5-cloud-failover-0.9.1-1.noarch.rpm"
+    destination = "/tmp/f5-cloud-failover-0.9.1-1.noarch.rpm"
+    connection {
+      host     = google_compute_address.mgmt_ext_ip.address
+      type     = "ssh"
+      user     = var.ssh_mgmt_user
+      private_key = file(var.ssh_mgmt_key)
+    }
+  }
+  provisioner "file" {
+    // content    = data.template_file.cfe-install-template.rendered
+    source      = "${path.cwd}/assets/cfe-install.sh"
+    destination = "/tmp/cfe_install.sh"
+    connection {
+      host     = google_compute_address.mgmt_ext_ip.address
+      type     = "ssh"
+      user     = var.ssh_mgmt_user
+      private_key = file(var.ssh_mgmt_key)
+    }
+  }
+  */
+}
+
+resource "null_resource" mgmt_remote_actions {
+
+  provisioner "file" {
+    source      = "${path.cwd}/assets/cfe_gcp.json"
+    destination = "/tmp/cfe_gcp.json"
+  }
+
+  provisioner "file" {
+    source      = "${path.cwd}/assets/f5-cloud-failover-0.9.1-1.noarch.rpm"
+    destination = "/tmp/f5-cloud-failover-0.9.1-1.noarch.rpm"
+  }
+
+  provisioner "file" {
+    // content    = data.template_file.cfe-install-template.rendered
+    source      = "${path.cwd}/assets/cfe-install.sh"
+    destination = "/tmp/cfe_install.sh"
+  }
+
+  connection {
+    host     = google_compute_address.mgmt_ext_ip.address
+    type     = "ssh"
+    user     = var.ssh_mgmt_user
+    private_key = file(var.ssh_mgmt_key)
+  }
 }

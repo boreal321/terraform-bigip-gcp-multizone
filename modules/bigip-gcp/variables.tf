@@ -5,8 +5,8 @@ variable "web_count" {}
 variable "mgmt_cidr" {}
 variable "external_cidr" {}
 variable "internal_cidr" {}
-variable "public_key_path" {}
-variable "private_key_path" {}
+variable "ssh_mgmt_user" {}
+variable "ssh_mgmt_key" {}
 variable "external_count" {}
 variable "external_machine_type" {}
 variable "external_os_image" {}
