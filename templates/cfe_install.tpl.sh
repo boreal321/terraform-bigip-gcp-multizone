@@ -1,5 +1,6 @@
 #!/bin/bash
-fn=f5-cloud-failover-0.9.1-1.noarch.rpm
+fn=${cfe_rpm}
+cfe_json=${cfe_json}
 gsutil cp gsutil gs://${bucket}/credentials/master .
 password=`sed -e 's/","username.*$//' master|sed -e 's/^.*assword":"//'`
 creds=admin:$password
@@ -19,5 +20,5 @@ for num in 1 2; do
     curl -ku $creds https://$bip/mgmt/shared/cloud-failover/info
     echo
     sleep 20 
-    curl -kvu $creds "https://$bip/mgmt/shared/cloud-failover/declare" -H "Origin: https://$bip" -H 'Content-Type: application/json' --data @cfe_gcp.json
+    curl -kvu $creds "https://$bip/mgmt/shared/cloud-failover/declare" -H "Origin: https://$bip" -H 'Content-Type: application/json' --data @$cfe_json
 done
