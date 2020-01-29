@@ -122,3 +122,15 @@ resource "google_compute_router_nat" "external_nat" {
     filter = "ERRORS_ONLY"
   }
 }
+
+
+/*
+resource "google_compute_route" "ext-route" {
+  name        = "network-route-${module.utils.env_prefix}"
+  description = "f5_cloud_failover_labels={\"f5_cloud_failover_label\":\"${module.utils.env_prefix}\"}"
+  dest_range  = "192.0.2.0/24"
+  network     = "${google_compute_network.int_network.name}"
+  next_hop_ip = "${google_compute_instance.vm02.network_interface.2.network_ip}"
+  priority    = 100
+}
+*/

@@ -118,14 +118,24 @@ resource "null_resource" mgmt_remote_actions {
   }
 
   provisioner "file" {
-    source      = "${path.cwd}/assets/f5-cloud-failover-0.9.1-1.noarch.rpm"
-    destination = "/tmp/f5-cloud-failover-0.9.1-1.noarch.rpm"
+    source      = "${path.cwd}/assets/f5-cloud-failover-1.0.0-0.noarch.rpm"
+    destination = "/tmp/f5-cloud-failover-1.0.0-0.noarch.rpm"
   }
 
   provisioner "file" {
     // content    = data.template_file.cfe-install-template.rendered
-    source      = "${path.cwd}/assets/cfe-install.sh"
+    source      = "${path.cwd}/assets/cfe_install.sh"
     destination = "/tmp/cfe_install.sh"
+  }
+
+  provisioner "file" {
+    source      = "${path.cwd}/assets/web_app_rest.json"
+    destination = "/tmp/web_app_rest.json"
+  }
+
+  provisioner "file" {
+    source      = var.ssh_mgmt_key
+    destination = "/home/${var.ssh_mgmt_user}/.ssh/id_rsa"
   }
 
   connection {

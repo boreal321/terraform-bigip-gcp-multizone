@@ -1,0 +1,17 @@
+{
+    "name": "web_vs",
+    "autoLasthop": "default",
+    "connectionLimit": 0,
+    "destination": "/Common/35.245.171.57:80",
+    "mask": "255.255.255.255",
+    "enabled": true,
+    "ipProtocol": "tcp",
+    "pool": "/Common/web_pool",
+    "source": "0.0.0.0/0",
+    "sourceAddressTranslation": {
+      "type": "automap"
+    },
+    "sourcePort": "preserve",
+    "translateAddress": "enabled",
+    "translatePort": "enabled"
+  }
