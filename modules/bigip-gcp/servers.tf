@@ -137,6 +137,9 @@ resource "null_resource" mgmt_remote_actions {
     source      = var.ssh_mgmt_key
     destination = "/home/${var.ssh_mgmt_user}/.ssh/id_rsa"
   }
+  /*
+   * TODO: chmod 600 id_rsa
+   */
 
   connection {
     host     = google_compute_address.mgmt_ext_ip.address
