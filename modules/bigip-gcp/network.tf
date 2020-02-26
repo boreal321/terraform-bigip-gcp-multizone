@@ -60,7 +60,8 @@ resource "google_compute_subnetwork" "internal_subnet" {
   network       = google_compute_network.internal_vpc.self_link
 }
 /* 
- * Cloud NAT for internal_vpc
+ * Cloud NAT for internal_vpc - required to install nginx and application on web servers
+ */
 resource "google_compute_router" "internal_router" {
   name    = "internal-router"
   region  = var.region
@@ -82,7 +83,6 @@ resource "google_compute_router_nat" "internal_nat" {
     filter = "ERRORS_ONLY"
   }
 }
- */
 
 /* 
  * external vpc and subnet
