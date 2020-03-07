@@ -7,6 +7,7 @@ module "bigip-gcp" {
   ssh_mgmt_user           = "granic"
   ssh_mgmt_key            = "~/.ssh/google_compute_engine"
   mgmt_cidr               = "10.1.10.0/24"
+  mgmt_machine_type       = "f1-micro"
   external_cidr           = "10.1.20.0/24"
   internal_cidr           = "10.1.30.0/24"
   external_count          = 1

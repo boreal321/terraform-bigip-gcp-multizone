@@ -50,7 +50,7 @@ resource "google_compute_instance" "external" {
 
 resource "google_compute_instance" "mgmt_server" {
   name         = "mgmt-server"
-  machine_type = var.external_machine_type
+  machine_type = var.mgmt_machine_type
   zone         = var.zones[0]
 
   tags = ["external", "http", "ssh"]
@@ -69,6 +69,9 @@ resource "google_compute_instance" "mgmt_server" {
     access_config {
       nat_ip = google_compute_address.mgmt_ext_ip.address
     }
+  }
+  network_interface {
+    subnetwork = google_compute_subnetwork.external_subnet.name
   }
 
   service_account {

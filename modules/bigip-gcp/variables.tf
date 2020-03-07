@@ -7,6 +7,7 @@ variable "external_cidr" {}
 variable "internal_cidr" {}
 variable "ssh_mgmt_user" {}
 variable "ssh_mgmt_key" {}
+variable "mgmt_machine_type" {}
 variable "external_count" {}
 variable "external_machine_type" {}
 variable "external_os_image" {}
